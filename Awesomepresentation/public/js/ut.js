@@ -118,6 +118,7 @@ $(function() {
         // Re-render the contents of the todo item.
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
+            $(this.el).attr('id','what the fuck');
             this.input = this.$('.edit');
             return this;
         },
@@ -136,8 +137,16 @@ $(function() {
         // Close the `"editing"` mode, saving changes to the todo.
         close: function() {
             this.model.save({
-                content: this.input.val(),
-                  step:$("input[name='step']").val()
+                  content: this.input.val(),
+                  step:$("input[name='step']").val(),
+                  dataX:$("input[name='dataX']").val(),
+                  dataY:$("input[name='dataY']").val(),
+                  dataZ:$("input[name='dataZ']").val(),
+                  dataRotateX:$("input[name='dataRotateX']").val(),
+                  dataRotateY:$("input[name='dataRotateY']").val(),
+                  dataRotateZ:$("input[name='dataRotateZ']").val(),
+                  dataScale:$("input[name='dataScale']").val()
+                //todo add other vals
                 
 
             });
