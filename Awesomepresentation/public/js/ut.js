@@ -119,8 +119,16 @@ $(function() {
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
 
-             this.$el.html(this.template(this.model.toJSON()));
-            return this;
+          this.content = this.$('.edit');
+          this.step=this.$("input[name='step']");
+          this.dataX=this.$("input[name='dataX']");
+          this.dataY=this.$("input[name='dataY']");
+          this.dataZ=this.$("input[name='dataZ']");
+          this.dataRotateX=this.$("input[name='dataRotateX']");
+          this.dataRotateY=this.$("input[name='dataRotateY']");
+          this.dataRotateZ=this.$("input[name='dataRotateZ']");
+          this.dataScale=this.$("input[name='dataScale']");
+           return this;
         },
 
         // Toggle the `"done"` state of the model.
@@ -131,21 +139,21 @@ $(function() {
         // Switch this view into `"editing"` mode, displaying the input field.
         edit: function() {
             $(this.el).addClass("editing");
-            this.input.focus();
+            this.content.focus();
         },
 
         // Close the `"editing"` mode, saving changes to the todo.
         close: function() {
             this.model.save({
-                  content: $("input[name='content']").val(),
-                  step:$("input[name='step']").val(),
-                  dataX:$("input[name='dataX']").val(),
-                  dataY:$("input[name='dataY']").val(),
-                  dataZ:$("input[name='dataZ']").val(),
-                  dataRotateX:$("input[name='dataRotateX']").val(),
-                  dataRotateY:$("input[name='dataRotateY']").val(),
-                  dataRotateZ:$("input[name='dataRotateZ']").val(),
-                  dataScale:$("input[name='dataScale']").val()
+                  content: this.content.val(),
+                  step:this.step.val(),
+                  dataX:this.dataX.val(),
+                  dataY:this.dataY.val(),
+                  dataZ:this.dataZ.val(),
+                  dataRotateX:this.dataRotateX.val(),
+                  dataRotateY:this.dataRotateY.val(),
+                  dataRotateZ:this.dataRotateZ.val(),
+                  dataScale:this.dataScale.val()
                 //todo add other vals
                 
 

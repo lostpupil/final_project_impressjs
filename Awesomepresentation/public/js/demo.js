@@ -150,20 +150,25 @@ $(function() {
             this.delegateEvents();
         }
     });
- var IuntiView = AV.View.extend({
+    var IuntiView = AV.View.extend({
 
         //... is a list tag.
-
+        className: 'step',
+        attributes: {
+            'data-x': 1500,
+            'data-y': 15,
+            'data-z': 0,
+            'data-rotate-x': 10,
+            'data-rotate-y': 1000,
+            'data-rotate-z': 500,
+            'data-scale': 0
+        },
 
         // Cache the template function for a single item.
         template: _.template($('#iunit-template').html()),
 
         // The DOM events specific to an item.
-        events: {
-
-            // ,
-            // "blur .edit": "close"
-        },
+        events: {},
 
         // The TodoView listens for changes to its model, re-rendering. Since there's
         // a one-to-one correspondence between a Todo and a TodoView in this
@@ -177,23 +182,12 @@ $(function() {
         // Re-render the contents of the todo item.
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
-             console.log(this.template(this.model.toJSON()) );
+            console.log(this.template(this.model.toJSON()));
             return this;
         },
 
         // Close the `"editing"` mode, saving changes to the todo.
         close: function() {
-            this.model.save({
-                  content: this.input.val(),
-                  step:$("input[name='step']").val(),
-                  dataX:$("input[name='dataX']").val(),
-                  dataY:$("input[name='dataY']").val(),
-                  dataZ:$("input[name='dataZ']").val(),
-                  dataRotateX:$("input[name='dataRotateX']").val(),
-                  dataRotateY:$("input[name='dataRotateY']").val(),
-                  dataRotateZ:$("input[name='dataRotateZ']").val(),
-                  dataScale:$("input[name='dataScale']").val()
-            });
 
         }
 
@@ -219,7 +213,7 @@ $(function() {
         initialize: function() {
             var self = this;
 
-            _.bindAll(this, 'addOne', 'addAll', 'addSome',  'logOut');
+            _.bindAll(this, 'addOne', 'addAll', 'addSome', 'logOut');
 
             // Main todo management template
             this.$el.html(_.template($("#impress-demo-template").html()));
