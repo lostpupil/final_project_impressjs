@@ -1,3 +1,5 @@
+
+
 /**
  * impress.js
  *
@@ -174,12 +176,12 @@
                            
                           // and `classList` and `dataset` APIs
                            ( body.classList ) &&
-                           ( body.dataset ) &&
+                           ( body.dataset );
                            
                           // but some mobile devices need to be blacklisted,
                           // because their CSS 3D support or hardware is not
                           // good enough to run impress.js properly, sorry...
-                           ( ua.search(/(iphone)|(ipod)|(android)/) === -1 );
+                          // ( ua.search(/(iphone)|(ipod)|(android)/) === -1 );
     
     if (!impressSupported) {
         // we can't be sure that `classList` is supported
@@ -218,6 +220,7 @@
     // for a presentation based on the element with given id ('impress'
     // by default).
     var impress = window.impress = function ( rootId ) {
+        var previousInit = body.classList.contains("impress-enabled");
         
         // If impress.js is not supported by the browser return a dummy API
         // it may not be a perfect solution but we return early and avoid
@@ -258,7 +261,11 @@
         
         // root presentation elements
         var root = byId( rootId );
-        var canvas = document.createElement("div");
+        if (previousInit) {
+            var canvas = root.children[0];
+        } else {
+            var canvas = document.createElement("div");
+        }
         
         var initialized = false;
         
@@ -355,10 +362,12 @@
             windowScale = computeWindowScale( config );
             
             // wrap steps with "canvas" element
-            arrayify( root.childNodes ).forEach(function ( el ) {
-                canvas.appendChild( el );
-            });
-            root.appendChild(canvas);
+            if (!previousInit) {
+                arrayify( root.childNodes ).forEach(function ( el ) {
+                    canvas.appendChild( el );
+                });
+                root.appendChild(canvas);
+            }
             
             // set initial styles
             document.documentElement.style.height = "100%";
@@ -438,14 +447,23 @@
             window.scrollTo(0, 0);
             
             var step = stepsData["impress-" + el.id];
+
+            function updateSurface(step, operation) {
+                var state = step.dataset.state;
+                if (typeof state == 'string') {
+                    state = state.trim().split(' ');
+                    for (var i = 0; i < state.length; ++i) {
+                        innerBg.classList[operation](state[i]);
+                    }
+                }
+            }
             
             if ( activeStep ) {
                 activeStep.classList.remove("active");
-                body.classList.remove("impress-on-" + activeStep.id);
+                updateSurface(activeStep, 'remove');
             }
             el.classList.add("active");
-            
-            body.classList.add("impress-on-" + el.id);
+            updateSurface(el, 'add');
             
             // compute target state of the canvas based on given step
             var target = {
@@ -798,3 +816,10 @@
 //
 // I've learnt a lot when building impress.js and I hope this code and comments
 // will help somebody learn at least some part of it.
+
+
+document.addEventListener("keydown", function(e) {
+    if (e.keyCode == 27) {
+        impress().goto('overview');
+    }
+}, false);

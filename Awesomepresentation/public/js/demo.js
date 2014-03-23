@@ -259,6 +259,7 @@ $(function() {
             var something =view.render().el;
             this.$("#impress").append(something.innerHTML);
             console.log(something.innerHTML);
+            
         },
 
         // Add all items in the Todos collection at once.
