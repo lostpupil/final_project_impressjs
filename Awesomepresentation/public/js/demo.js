@@ -153,16 +153,16 @@ $(function() {
     var IuntiView = AV.View.extend({
 
         //... is a list tag.
-        className: 'step',
-        attributes: {
-            'data-x': 1500,
-            'data-y': 15,
-            'data-z': 0,
-            'data-rotate-x': 10,
-            'data-rotate-y': 1000,
-            'data-rotate-z': 500,
-            'data-scale': 0
-        },
+        // className: 'step',
+        // attributes: {
+        //     'data-x':  function() { return this.model.get('dataX'); },
+        //     'data-y': 15,
+        //     'data-z': 0,
+        //     'data-rotate-x': 10,
+        //     'data-rotate-y': 1000,
+        //     'data-rotate-z': 500,
+        //     'data-scale': 0
+        // },
 
         // Cache the template function for a single item.
         template: _.template($('#iunit-template').html()),
@@ -182,7 +182,6 @@ $(function() {
         // Re-render the contents of the todo item.
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
-            console.log(this.template(this.model.toJSON()));
             return this;
         },
 
@@ -257,7 +256,9 @@ $(function() {
             var view = new IuntiView({
                 model: todo
             });
-            this.$("#impress").append(view.render().el);
+            var something =view.render().el;
+            this.$("#impress").append(something.innerHTML);
+            console.log(something.innerHTML);
         },
 
         // Add all items in the Todos collection at once.
