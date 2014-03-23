@@ -1,0 +1,115 @@
+
+ var IunitView = AV.View.extend({
+
+        //... is a list tag.
+        tagName: "div",
+
+        // Cache the template function for a single item.
+        template: _.template($('#iunit-template').html()),
+
+        // The DOM events specific to an item.
+        events: {
+
+        },
+
+        // The TodoView listens for changes to its model, re-rendering. Since there's
+        // a one-to-one correspondence between a Todo and a TodoView in this
+        // app, we set a direct reference on the model for convenience.
+        initialize: function() {
+            _.bindAll(this, 'render', 'close', 'remove');
+            this.model.bind('change', this.render);
+            this.model.bind('destroy', this.remove);
+        },
+
+        // Re-render the contents of the todo item.
+        render: function() {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        }
+
+
+    });
+
+    // The Application
+    // ---------------
+
+    // The main view that lets a user manage their todo items
+    var ImpressDemoView = AV.View.extend({
+
+        // Our template for the line of statistics at the bottom of the app.
+
+
+        // Delegated events for creating new items, and clearing completed ones.
+        events: {
+
+            "click .log-out": "logOut"
+        },
+
+        el: ".content",
+
+        // At initialization we bind to the relevant events on the `Todos`
+        // collection, when items are added or changed. Kick things off by
+        // loading any preexisting todos that might be saved to AV.
+        initialize: function() {
+            var self = this;
+
+            _.bindAll(this, 'addOne', 'addAll', 'addSome', 'logOut');
+
+            // Main todo management template
+            this.$el.html(_.template($("#impress-demo-template").html()));
+
+
+            // Create our collection of Todos
+            this.todos = new TodoList;
+
+            // Setup the query for the collection to look for todos from the current user
+            this.todos.query = new AV.Query(Todo);
+            this.todos.query.equalTo("user", AV.User.current());
+
+            this.todos.bind('add', this.addOne);
+            this.todos.bind('reset', this.addAll);
+            this.todos.bind('all', this.render);
+
+            // Fetch all the todo items for this user
+            this.todos.fetch();
+
+            state.on("change", this.filter, this);
+        },
+
+        // Logs out the user and shows the login view
+        logOut: function(e) {
+            AV.User.logOut();
+            new LogInView();
+            this.undelegateEvents();
+            delete this;
+        },
+
+
+
+   
+
+        // Add a single todo item to the list by creating a view for it, an
+        // appending its element to the `<ul>`.
+        addOne: function(todo) {
+            var view = new TodoView({
+                model: todo
+            });
+            this.$("#impress-list").append(view.render().el);
+        },
+
+        // Add all items in the Todos collection at once.
+        addAll: function(collection, filter) {
+            this.$("#impress-list").html("");
+            this.todos.each(this.addOne);
+        },
+
+        // Only adds some todos, based on a filtering function that is passed in
+        addSome: function(filter) {
+            var self = this;
+            this.$("#impress-list").html("");
+            this.todos.chain().filter(filter).each(function(item) {
+                self.addOne(item)
+            });
+        },
+    });
+

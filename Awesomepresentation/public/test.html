@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+    <head>
+         <meta charset="utf-8" />
+        <meta name="viewport" content="width=1024" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>Breaking Bad</title>
+ 
+    <link href="impress.js-master/css/impress-demo.css" rel="stylesheet" />
+       <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="js/underscore-1.1.6.js"></script>
+        <script src="js/av.js"></script>
+        <script src="js/demo.js"></script>
+
+        
+
+
+    </head>
+    <body>
+        <div class="todoapp"  >
+
+        </div>
+
+
+    <!-- Templates -->
+
+
+    <script type="text/template" id="impress-demo-template">
+        <div  id="impress">
+
+        </div>
+    </script>
+
+    <script src="js/impress.js"></script>
+    <script>
+
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        impress().init();
+    });
+    </script>
+
+
+
+    <script type="text/template" id="iunit-template">
+
+      <div class="<%=step%>" data-x="<%=dataX%>" data-y="<%=dataY%>" data-z="<%=dataZ%>" data-rotate-x="<%=dataRotateX%>" data-rotate-y="<%=dataRotateY%>" data-rotate-z="<%=dataRotateZ%>" data-scale="<%=dataScale%>">
+          <%=content%>
+      </div>
+    </script>
+
+ 
+
+    <script type="text/template" id="login-template">
+      <header id="header"></header>
+      <div class="login">
+        <form class="login-form">
+          <h2>Log In</h2>
+          <div class="error" style="display:none"></div>
+          <input type="text" id="login-username" placeholder="Username" />
+          <input type="password" id="login-password" placeholder="Password" />
+          <button>Log In</button>
+        </form>
+
+        <form class="signup-form">
+          <h2>Sign Up</h2>
+          <div class="error" style="display:none"></div>
+          <input type="text" id="signup-username" placeholder="Username" />
+          <input type="password" id="signup-password" placeholder="Create a Password" />
+          <button>Sign Up</button>
+        </form>
+      </div>
+    </script>
+
+</body>
+</html>
