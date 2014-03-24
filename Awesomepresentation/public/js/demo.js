@@ -245,11 +245,6 @@ $(function() {
             delete this;
         },
 
-
-
-
-
-
         // Add a single todo item to the list by creating a view for it, an
         // appending its element to the `<ul>`.
         addOne: function(todo) {
@@ -266,6 +261,7 @@ $(function() {
         addAll: function(collection, filter) {
             this.$("#impress").html("");
             this.todos.each(this.addOne);
+            $('#impress').append('<div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10"></div>');
             $('#impress').append("<script>impress().init();</script>");
         },
 
