@@ -15,13 +15,14 @@
         <script src="js/av.js"></script>
         <script src="js/demo.js"></script>
 
-        <script src="js/impress.js"></script>
+
 
 
 
 
     </head>
     <body>
+       <script src="js/impress.js"></script>
         <div class="todoapp" >
 
 
@@ -33,16 +34,9 @@
 
     <!-- Templates -->
     <script type="text/template" id="impress-demo-template">
-
-
-
-        <div  id="impress"  onReady=" impress().init();">
-
-        </div>
-
-       
+        <div  id="impress">
+        </div>    
     </script>
-
     <script type="text/template" id="iunit-template">
       <div class="<%=step%>" data-x="<%=dataX%>" data-y="<%=dataY%>" data-z="<%=dataZ%>" data-rotate-x="<%=dataRotateX%>" data-rotate-y="<%=dataRotateY%>" data-rotate-z="<%=dataRotateZ%>" data-scale="<%=dataScale%>">
           <%=content%>
@@ -68,7 +62,7 @@
         </form>
       </div>
     </script>
-
+       
 
 </body>
 </html>

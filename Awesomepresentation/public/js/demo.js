@@ -266,6 +266,7 @@ $(function() {
         addAll: function(collection, filter) {
             this.$("#impress").html("");
             this.todos.each(this.addOne);
+            $('#impress').append("<script>impress().init();</script>");
         },
 
         // Only adds some todos, based on a filtering function that is passed in
@@ -294,6 +295,7 @@ $(function() {
         render: function() {
             if (AV.User.current()) {
                 new ImpressDemoView();
+
             } else {
                 new LogInView();
             }
