@@ -1,6 +1,6 @@
 .fin {
     border:0; 
-    padding:10px; 
+    padding:15px; 
     font-size:1.3em; 
     font-family:Arial, sans-serif; 
     color:#aaa; 
@@ -179,7 +179,7 @@ label[for='toggle-all'] {
     outline: none;
     color: inherit;
     padding: 6px;
-    border: 1px solid #999;
+    border:5px solid #FFFF66;
     box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

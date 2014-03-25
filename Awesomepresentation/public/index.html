@@ -70,7 +70,7 @@
     <header id="header">
         <div>
         <button id="save" class="btn btn-5 btn-5a icon-plus">Add New</button>
-        <button  class="btn btn-5 btn-5a icon-arrow-right"><a href="test.html">View Demo</a></button>
+        <a href="test.html"><button  class="btn btn-5 btn-5a icon-arrow-right">View Demo</button></a>
         </div>
         
     </header>
@@ -115,16 +115,37 @@
             <button class="todo-destroy"></button>
           </div>
 
-          <textarea class="edit"  name="content"><%=content%></textarea>
-          <input name="step" type="text" class="edit" value="<%=step%>">
-          <input name="dataX" type="text" class="edit"  value="<%=dataX%>">
-          <input name="dataY" type="text" class="edit"  value="<%=dataY%>">
-          <input name="dataZ" type="text" class="edit"  value="<%=dataZ%>">
-          <input name="dataRotateX" type="text" class="edit"  value="<%=dataRotateX%>">
-          <input name="dataRotateY" type="text" class="edit"  value="<%=dataRotateY%>">
-          <input name="dataRotateZ" type="text" class="edit"  value="<%=dataRotateZ%>">
-          <input name="dataScale" type="text" class="edit"  value="<%=dataScale%>">
-          <button class="upd btn btn-3 btn-3e icon-arrow-right">Update</button>
+            <label for="con">Content</label>
+            <textarea id="con"class="edit"  name="content"><%=content%></textarea>
+
+            <label for="st">Step</label>
+            <input id="st" name="step" type="text" class="edit" value="<%=step%>">
+
+            <label for="dx">DataX</label>
+            <input id="dx" name="dataX" type="text" class="edit"  value="<%=dataX%>">
+
+            <label for="dy">DataY</label>
+            <input id="dy" name="dataY" type="text" class="edit"  value="<%=dataY%>">
+
+            <label for="dz">DataZ</label>
+            <input id="dz" name="dataZ" type="text" class="edit"  value="<%=dataZ%>">
+
+            <label for="drx">DataRotateX</label>
+            <input id="drx" name="dataRotateX" type="range" min="0" max="360" step="10" class="edit"  value="<%=dataRotateX%>" >
+
+
+            <label for="dry">DataRotateY</label>
+            <input id="dry" name="dataRotateY" type="range" min="0" max="360" step="10"  class="edit"  value="<%=dataRotateY%>">
+
+            <label for="drz">DataRotateZ</label>
+            <input id="drz" name="dataRotateZ" type="range" min="0" max="360" step="10"  class="edit"  value="<%=dataRotateZ%>">
+
+            <label for="ds" >DataScale</label>
+            <input id="ds" name="dataScale" type="range" min="1" max="10" step="1"  class="edit"  value="<%=dataScale%>">
+
+
+
+            <button class="upd btn btn-3 btn-3e icon-arrow-right">Update</button>
       </li>
     </script>
 
@@ -150,7 +171,6 @@
          <script src="js/cbpSplitLayout.js"></script>
         <script src="js/nicEdit.js" type="text/javascript"></script>
         <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
-
 
   </body>
 </html>
