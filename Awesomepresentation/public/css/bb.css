@@ -64,22 +64,6 @@ label[for='toggle-all'] {
     border-bottom: none;
 }
 
-#todo-list li.editing {
-    border-bottom: none;
-    padding: 0;
-}
-
-#todo-list li.editing .edit {
-
-    width: 506px;
-    padding: 13px 17px 12px 17px;
-    margin: 0 0 0 43px;
-}
-
-#todo-list li.editing .view {
-    display: none;
-}
-
 #todo-list li .toggle {
     text-align: center;
     width: 40px;
@@ -170,15 +154,14 @@ label[for='toggle-all'] {
 
 .edit {
     position: relative;
-    margin: 0;
     width: 100%;
-    font-size: 24px;
+    margin: 0;
+    font-size: 20px;
     font-family: inherit;
-    line-height: 1.4em;
+    line-height: 1.2em;
     border: 0;
     outline: none;
     color: inherit;
-    padding: 6px;
     border:5px solid #FFFF66;
     box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
     -webkit-box-sizing: border-box;
@@ -193,3 +176,11 @@ label[for='toggle-all'] {
     font-smoothing: antialiased;
 }
 
+.notebook {
+    resize: none;
+    background-color: #fff; 
+    background-image: 
+    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+}

@@ -99,7 +99,6 @@ $(function() {
         // The DOM events specific to an item.
         events: {
             "click .toggle": "toggleDone",
-            "dblclick label.todo-content": "edit",
             "click .todo-destroy": "clear",
             "click .upd": "updateOnEnter"
             // ,
@@ -119,7 +118,7 @@ $(function() {
         render: function() {
             $(this.el).html(this.template(this.model.toJSON()));
 
-          this.content = this.$('.edit');
+          this.content = this.$('#con');
           this.step=this.$("input[name='step']");
           this.dataX=this.$("input[name='dataX']");
           this.dataY=this.$("input[name='dataY']");
@@ -134,12 +133,6 @@ $(function() {
         // Toggle the `"done"` state of the model.
         toggleDone: function() {
             this.model.toggle();
-        },
-
-        // Switch this view into `"editing"` mode, displaying the input field.
-        edit: function() {
-            $(this.el).addClass("editing");
-            this.content.focus();
         },
 
         // Close the `"editing"` mode, saving changes to the todo.
