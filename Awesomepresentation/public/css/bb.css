@@ -9,11 +9,6 @@ label[for='toggle-all'] {
 }
 
 #toggle-all {
-    position: absolute;
-    top: -56px;
-    left: -15px;
-    width: 65px;
-    height: 41px;
     text-align: center;
     border: none; /* Mobile Safari */
     -webkit-appearance: none;
@@ -59,7 +54,7 @@ label[for='toggle-all'] {
 }
 
 #todo-list li.editing .edit {
-    display: block;
+
     width: 506px;
     padding: 13px 17px 12px 17px;
     margin: 0 0 0 43px;
@@ -181,3 +176,5 @@ label[for='toggle-all'] {
     -o-font-smoothing: antialiased;
     font-smoothing: antialiased;
 }
+
+

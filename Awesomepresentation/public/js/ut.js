@@ -184,7 +184,7 @@ $(function() {
 
         // Delegated events for creating new items, and clearing completed ones.
         events: {
-            "click .save": "createOnEnter",
+            "click #save": "createOnEnter",
             "click #clear-completed": "clearCompleted",
             "click #toggle-all": "toggleAllComplete",
             "click .log-out": "logOut",
