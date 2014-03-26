@@ -123,8 +123,10 @@
         <form class="signup-form">
           <h2>Sign Up</h2>
           <div class="error" style="display:none"></div>
-          <input class="fin" type="text" id="signup-username" placeholder="Username" />
-          <input  class="fin" type="password" id="signup-password" placeholder="Password" />
+          <input class="fin" type="text" id="signup-username" placeholder="Username"  pattern="[A-z]{8,16}"
+  title="At least 8 chars! And no more than 16 chars! Asswhole."/>
+          <input  class="fin" type="password" id="signup-password" placeholder="Password"  pattern="^[a-zA-Z]\w{5,17}$"
+  title="At least 6 chars! And no more than 16 chars! Asswhole."/>
           <button class="btn btn-4 btn-4a icon-arrow-right">Sign Up</button>
         </form>
       </div>
