@@ -291,10 +291,11 @@ $(function() {
 
         // Add all items in the Todos collection at once.
         addAll: function(collection, filter) {
-            var dotx="<script type='text/javascript'>function change() {var value = document.getElementById('drx').value ;document.getElementById('rotx').innerHTML = value;}</script>";
+            
+             var dotx="<script>$('#drx').change(function(){$('#rotx').html($('#drx').val())});</script>"
             this.$("#todo-list").html("");
             this.todos.each(this.addOne);
-            this.$(".row").append(dotx);
+             this.$(".row").append(dotx);
         },
 
         // Only adds some todos, based on a filtering function that is passed in
