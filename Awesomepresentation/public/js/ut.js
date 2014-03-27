@@ -130,6 +130,7 @@ $(function() {
            return this;
         },
 
+
         // Toggle the `"done"` state of the model.
         toggleDone: function() {
             this.model.toggle();
@@ -279,16 +280,21 @@ $(function() {
         // Add a single todo item to the list by creating a view for it, an
         // appending its element to the `<ul>`.
         addOne: function(todo) {
+           
             var view = new TodoView({
                 model: todo
             });
             this.$("#todo-list").append(view.render().el);
+
+
         },
 
         // Add all items in the Todos collection at once.
         addAll: function(collection, filter) {
+            var dotx="<script type='text/javascript'>function change() {var value = document.getElementById('drx').value ;document.getElementById('rotx').innerHTML = value;}</script>";
             this.$("#todo-list").html("");
             this.todos.each(this.addOne);
+            this.$(".row").append(dotx);
         },
 
         // Only adds some todos, based on a filtering function that is passed in

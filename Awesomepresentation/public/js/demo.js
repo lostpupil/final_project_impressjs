@@ -168,7 +168,9 @@ $(function() {
         template: _.template($('#iunit-template').html()),
 
         // The DOM events specific to an item.
-        events: {},
+        events: {
+           
+        },
 
         // The TodoView listens for changes to its model, re-rendering. Since there's
         // a one-to-one correspondence between a Todo and a TodoView in this
@@ -184,12 +186,6 @@ $(function() {
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
         },
-
-        // Close the `"editing"` mode, saving changes to the todo.
-        close: function() {
-
-        }
-
     });
 
     // The Application

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Breaking Bad</title>
         <link href="css/bb.css" media="all" rel="stylesheet" type="text/css" />
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="js/jquery.min.js"></script>
         <script src="js/underscore-1.1.6.js"></script>
         <script src="js/av.js"></script>
         <script src="js/ut.js"></script>
@@ -15,6 +15,9 @@
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link rel="stylesheet" type="text/css" href="css/button.css" />
+
+
+
         <script src="js/classie.js"></script>
 
         <script src="js/modernizr.custom.js"></script>
@@ -160,9 +163,10 @@
                     <label for="con">Content</label>
                     <textarea id="con"class="edit notebook"  name="content" cols="60" rows="15"><%=content%></textarea>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" id='rot'>
                     <label for="drx">RotateX</label>
-                    <input id="drx" name="dataRotateX" type="range" min="0" max="360" step="10" class="edit"  value="<%=dataRotateX%>" >
+                    <input id="drx" name="dataRotateX" type="range" min="0" max="360" step="10" class="edit"  value="<%=dataRotateX%>"  onchange="change()">
+                    <span id="rotx">5</span>
 
 
                     <label for="dry">RotateY</label>

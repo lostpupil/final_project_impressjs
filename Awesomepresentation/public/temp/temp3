@@ -15,3 +15,6 @@
 
 
 
+$("#drx").change(function(){$('#rotx').innerHTML =$('#drx').value;});
+
+<script type='text/javascript'>function change() {var value = document.getElementById('drx').value ;document.getElementById('dotx').innerHTML = value;}</script>
