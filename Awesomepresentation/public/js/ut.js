@@ -100,7 +100,10 @@ $(function() {
         events: {
             "click .toggle": "toggleDone",
             "click .todo-destroy": "clear",
-            "click .upd": "updateOnEnter"
+            "click .upd": "updateOnEnter",
+            "change #dry":"setroty",
+            "change #drx":"setrotx",
+            "change #drz":"setrotz"
             // ,
             // "blur .edit": "close"
         },
@@ -109,15 +112,14 @@ $(function() {
         // a one-to-one correspondence between a Todo and a TodoView in this
         // app, we set a direct reference on the model for convenience.
         initialize: function() {
-            _.bindAll(this, 'render', 'close', 'remove');
+            _.bindAll(this, 'render', 'close', 'remove','setrotx','setroty','setrotz');
             this.model.bind('change', this.render);
             this.model.bind('destroy', this.remove);
         },
 
         // Re-render the contents of the todo item.
         render: function() {
-            $(this.el).html(this.template(this.model.toJSON()));
-
+         $(this.el).html(this.template(this.model.toJSON()));
           this.content = this.$('#con');
           this.step=this.$("input[name='step']");
           this.dataX=this.$("input[name='dataX']");
@@ -139,18 +141,15 @@ $(function() {
         // Close the `"editing"` mode, saving changes to the todo.
         close: function() {
             this.model.save({
-                  content: this.content.val(),
-                  step:this.step.val(),
-                  dataX:this.dataX.val(),
-                  dataY:this.dataY.val(),
-                  dataZ:this.dataZ.val(),
-                  dataRotateX:this.dataRotateX.val(),
-                  dataRotateY:this.dataRotateY.val(),
-                  dataRotateZ:this.dataRotateZ.val(),
-                  dataScale:this.dataScale.val()
-                //todo add other vals
-                
-
+              content: this.content.val(),
+              step:this.step.val(),
+              dataX:this.dataX.val(),
+              dataY:this.dataY.val(),
+              dataZ:this.dataZ.val(),
+              dataRotateX:this.dataRotateX.val(),
+              dataRotateY:this.dataRotateY.val(),
+              dataRotateZ:this.dataRotateZ.val(),
+              dataScale:this.dataScale.val()
             });
             $(this.el).removeClass("editing");
         },
@@ -158,6 +157,24 @@ $(function() {
         // If you hit `enter`, we're through editing the item.
         updateOnEnter: function(e) {
             this.close();
+        },
+        setrotx:function(e){
+            xv=this.$('#drx');
+            rotx=this.$('#rotx');
+            this.$('#drx').change(function(){
+            rotx.html(xv.val())});
+        },
+        setroty:function(e){
+            yv=this.$('#dry');
+            roty=this.$('#roty');
+            this.$('#dry').change(function(){
+            roty.html(yv.val())});
+        },
+        setrotz:function(e){
+            zv=this.$('#drz');
+            rotz=this.$('#rotz');
+            this.$('#drz').change(function(){
+            rotz.html(zv.val())});
         },
 
         // Remove the item, destroy the model.
@@ -290,12 +307,9 @@ $(function() {
         },
 
         // Add all items in the Todos collection at once.
-        addAll: function(collection, filter) {
-            
-             var dotx="<script>$('#drx').change(function(){$('#rotx').html($('#drx').val())});</script>"
+        addAll: function(collection, filter) {     
             this.$("#todo-list").html("");
             this.todos.each(this.addOne);
-             this.$(".row").append(dotx);
         },
 
         // Only adds some todos, based on a filtering function that is passed in
