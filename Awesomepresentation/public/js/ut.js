@@ -23,7 +23,7 @@ $(function() {
             dataRotateX: "0",
             dataRotateY: "0",
             dataRotateZ: "0",
-            dataScale: "5",
+            dataScale: "1",
             done: false
         },
         // Ensure that each todo created has `content`.
@@ -302,15 +302,14 @@ $(function() {
                 model: todo
             });
             this.$("#todo-list").append(view.render().el);
-
-
         },
 
         // Add all items in the Todos collection at once.
         addAll: function(collection, filter) {     
             this.$("#todo-list").html("");
             this.todos.each(this.addOne);
-        },
+            $("#todo-list").append("<script>$(function(){$('textarea').htmlarea(); });</script>")
+       },
 
         // Only adds some todos, based on a filtering function that is passed in
         addSome: function(filter) {
