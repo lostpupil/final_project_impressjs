@@ -66,8 +66,8 @@ label[for='toggle-all'] {
 
 #todo-list li .toggle {
     text-align: center;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     position: relative;
     top: 0;
     bottom: 0;
@@ -131,7 +131,7 @@ label[for='toggle-all'] {
 
 #todo-list li .todo-destroy:hover {
 
-    text-shadow: 0 0 1px #000,
+    text-shadow: 0 0 0px #000,
     0 0 10px rgba(199, 107, 107, 0.8);
 
 }
@@ -154,7 +154,7 @@ label[for='toggle-all'] {
 
 .edit {
     position: relative;
-    width: 100%;
+    width: 75%;
     margin: 0;
     font-size: 20px;
     font-family: inherit;

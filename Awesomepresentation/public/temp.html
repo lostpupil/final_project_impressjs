@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Breaking Bad</title>
         <link href="css/bb.css" media="all" rel="stylesheet" type="text/css" />
+         <link rel="stylesheet" type="text/css" href="css/timelinestyle.css" />
         <script src="js/jquery.min.js"></script>
         <script src="js/underscore-1.1.6.js"></script>
         <script src="js/av.js"></script>
@@ -17,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="css/button.css" />
         <script src="js/classie.js"></script>
         <script src="js/modernizr.custom.js"></script>
+
 
         <script type="text/javascript" src="js/jHtmlArea-0.7.5.min.js"></script>
         <link rel="Stylesheet" type="text/css" href="css/jHtmlArea.css" />
@@ -104,14 +106,14 @@
     <div id="main">
         <input id="toggle-all" type="checkbox">
         <label  for="toggle-all">Mark all as complete</label>             
-        <ul id="todo-list">
+        <ul id="todo-list" class="timeline">
             <img src='images/spinner.gif' class='spinner' />
         </ul>
     </div>
     <div id="todo-stats"></div>
 </script>
 
-    <script type="text/template" id="login-template">
+<script type="text/template" id="login-template">
       <header id="header"></header>
       <div class="login">
         <form class="login-form">
@@ -126,25 +128,30 @@
           <h2>Sign Up</h2>
           <div class="error" style="display:none"></div>
           <input class="fin" type="text" id="signup-username" placeholder="Username"  pattern="[A-z]{8,16}"
-  title="At least 8 chars! And no more than 16 chars! Asswhole."/>
+             title="At least 8 chars! And no more than 16 chars! Asswhole."/>
           <input  class="fin" type="password" id="signup-password" placeholder="Password"  pattern="^[a-zA-Z]\w{5,17}$"
-  title="At least 6 chars! And no more than 16 chars! Asswhole."/>
+              title="At least 6 chars! And no more than 16 chars! Asswhole."/>
           <button class="btn btn-4 btn-4a icon-arrow-right">Sign Up</button>
         </form>
       </div>
-    </script>
+</script>
+
+<script type="text/template" id="item-template">
+
+      <div  class="<%= done ? 'completed' : '' %>">
 
 
-    <script type="text/template" id="item-template">
+           <div class="row">
+                <div class="col-md-2">
                     <div class="view">
                     <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %>>
+                    <label class="todo-content"><%= content %></label>
                     <button class="todo-destroy"></button>
                     </div>
-      <div  class="<%= done ? 'completed' : '' %>">
-           <div class="row">
+             </div>
                 <div class="col-md-3">
-                    <input type="radio" name="step" value="step" /> step
-                    <input type="radio" name="step" value="step slide" />step slide
+                    <label for="st">Step</label>
+                    <input id="st" name="step" type="text" class="edit" value="<%=step%>">
 
                     <label for="dx">DataX</label>
                     <input id="dx" name="dataX" type="text" class="edit"  value="<%=dataX%>">
@@ -155,11 +162,11 @@
                     <label for="dz">DataZ</label>
                     <input id="dz" name="dataZ" type="text" class="edit"  value="<%=dataZ%>">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="con">Content</label>
-                    <textarea id="con"class="edit notebook"  name="content" cols="40" rows="10"><%=content%></textarea>
+                    <textarea id="con"class="edit notebook"  name="content" cols="40" rows="15"><%=content%></textarea>
                 </div>
-                <div class="col-md-3" id='rot'>
+                <div class="col-md-2" id='rot'>
                     <label for="drx">RotateX</label>
                     <input id="drx" name="dataRotateX" type="range" min="0" max="360" step="10" class="edit"  value="<%=dataRotateX%>"  >
                     <span id="rotx"></span>
@@ -178,7 +185,6 @@
                 </div>
            </div>
            <br>
-
             <button class="upd btn btn-3 btn-3e icon-arrow-right">Update</button>
       </div>
     </script>
