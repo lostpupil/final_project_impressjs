@@ -99,6 +99,7 @@
         <button id="save" class="btn btn-5 btn-5a icon-plus">Add New</button>
         <a href="test.html"><button  class="btn btn-5 btn-5a icon-arrow-right">View Demo</button></a>
         </div>
+
         
     </header>
     <div id="main">
@@ -143,9 +144,8 @@
       <div  class="<%= done ? 'completed' : '' %>">
            <div class="row">
                 <div class="col-md-3">
-                    <input type="radio" name="step" value="step" /> step
-                    <input type="radio" name="step" value="step slide" />step slide
-
+                    <label for="step">Step</label>
+                    <input type="text" name="step" value="<%=step%>" class="edit"> 
                     <label for="dx">DataX</label>
                     <input id="dx" name="dataX" type="text" class="edit"  value="<%=dataX%>">
 
@@ -156,7 +156,7 @@
                     <input id="dz" name="dataZ" type="text" class="edit"  value="<%=dataZ%>">
                 </div>
                 <div class="col-md-6">
-                    <label for="con">Content</label>
+                    
                     <textarea id="con"class="edit notebook"  name="content" cols="40" rows="10"><%=content%></textarea>
                 </div>
                 <div class="col-md-3" id='rot'>
@@ -179,7 +179,7 @@
            </div>
            <br>
 
-            <button class="upd btn btn-3 btn-3e icon-arrow-right">Update</button>
+            <button class="upd btn btn-3 btn-3e">Update</button>
       </div>
     </script>
 

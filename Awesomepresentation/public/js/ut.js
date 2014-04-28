@@ -1,7 +1,3 @@
-// An example AV.js Backbone application based on the todo app by
-
-// the todo items and provide user authentication and sessions.
-
 $(function() {
 
     AV.$ = jQuery;
@@ -173,7 +169,7 @@ $(function() {
         setrotz:function(e){
             zv=this.$('#drz');
             rotz=this.$('#rotz');
-            this.$('#drz').change(function(){
+            this.$('#drz').change(function(){zhe
             rotz.html(zv.val())});
         },
 
